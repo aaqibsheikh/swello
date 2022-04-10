@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
+        '29': '7.125rem',
         '54': '13.438rem'
       },
       width: {
@@ -26,7 +27,9 @@ module.exports = {
         'xxl': '1.375'
       },
       margin: {
-        '13': '3.125rem'
+        '13': '3.125rem',
+        '15': '3.75rem',
+        '70': '17rem',
       }
     },
   },

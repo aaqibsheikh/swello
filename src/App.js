@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
-import Dashboard from './pages/Dashboard'
+import WalletPage from './pages/WalletPage'
+import DashboardPage from './pages/DashboardPage'
 import MobileMenu from './components/MobileMenu'
 const getAccount = () => {
   const account = localStorage.getItem('account')
@@ -33,7 +34,7 @@ function App() {
   }, [account])
 
   return (
-    <div className="flex md:flex-row flex-col relative">
+    <div className="flex md:flex-row flex-col relative main-content">
       <Sidebar />
       <div className="bg-main-content flex-1">
         <Header />
@@ -42,7 +43,19 @@ function App() {
             exact
             path="/"
             element={
-              <Dashboard
+              <WalletPage
+                balance={balance}
+                account={account}
+                setAccount={setAccount}
+                setBalance={setBalance}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/dashboard"
+            element={
+              <DashboardPage
                 balance={balance}
                 account={account}
                 setAccount={setAccount}

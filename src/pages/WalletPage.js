@@ -11,7 +11,7 @@ import SwelloCard from '../components/SwelloCard'
 import DashboardChart from '../components/DashboardChart'
 import LogoIcon from '../assets/images/logo-icon.svg'
 
-export default function Dashboard() {
+export default function WalletPage() {
   return (
     <div className="flex md:flex-row flex-col md:space-x-10 space-x-0">
       <div className="md:pt-24 pt-4 flex flex-col md:pl-20 px-4">
@@ -25,8 +25,8 @@ export default function Dashboard() {
             <br />
             <span className="font-axi font-normal text-xs text-[#D0D0DA]">min</span>
           </p>
-          <div className="flex-1">
-            <div className="swello-progress-bar" style={{width: '45%'}}></div>
+          <div className="flex-1 bg-black rounded-[100px]">
+            <div className="swello-progress-bar rounded-[100px]" style={{width: '45%'}}></div>
           </div>
           <p className="font-blender font-bold text-xl text-white">
             $282 / day
@@ -34,7 +34,7 @@ export default function Dashboard() {
         </div>
 
         <p className="md:order-3 order-4 uppercase  font-blender font-bold text-xl text-white mb-2.5 md:hidden block mt-7">Lifetime Gains</p>
-        <div className="md:order-4 order-5 flex items-center justify-between space-x-8 md:mt-10 mt-0">
+        <div className="md:order-4 order-5 flex items-center justify-between md:space-x-8 space-x-0 md:mt-10 mt-0">
           <div className="bg-[#161724] rounded-[10px] px-[25px] py-[16px]">
             <div className="w-16 h-16 mb-3 progress-1">
               <CircularProgressbarWithChildren
