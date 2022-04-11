@@ -10,10 +10,10 @@ import { Link } from "react-router-dom";
 export default function MobileMenu() {
   return (
     <div className="flex items-center justify-evenly fixed h-24 bottom-0 bg-[#0F0F13] rounded-[15px] w-full pb-6 md:hidden">
-      <Link to="/">
+      <Link to="/dashboard">
         <img src={Icon1} alt="" />
       </Link>
-      <Link to="/" className="mr-10">
+      <Link to="/calculator" className="mr-10">
         <img src={Icon2} alt="" />
       </Link>
       <Link to="/" className='absolute'>

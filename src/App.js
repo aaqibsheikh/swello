@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import WalletPage from './pages/WalletPage'
 import DashboardPage from './pages/DashboardPage'
+import CalculatorPage from './pages/CalculatorPage'
 import MobileMenu from './components/MobileMenu'
 const getAccount = () => {
   const account = localStorage.getItem('account')
@@ -56,6 +57,18 @@ function App() {
             path="/dashboard"
             element={
               <DashboardPage
+                balance={balance}
+                account={account}
+                setAccount={setAccount}
+                setBalance={setBalance}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/calculator"
+            element={
+              <CalculatorPage
                 balance={balance}
                 account={account}
                 setAccount={setAccount}
