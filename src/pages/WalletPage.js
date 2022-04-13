@@ -14,7 +14,8 @@ import LogoIcon from '../assets/images/logo-icon.svg'
 export default function WalletPage() {
   return (
     <div className="flex lg:flex-row flex-col">
-      <div className="lg:pt-24 md:pt-10 pt-4 flex flex-col lg:pl-20 lg:px-0 md:px-32 px-4">
+      <div className="lg:mt-24 md:mt-10 mt-4 lg:ml-20 lg:mx-0 md:mx-32 mx-4">
+      <div className='flex flex-col '>
         <p className="uppercase text-white mb-3 text-2xl font-bold font-blender lg:order-1 order-1">Your wallet</p>
         <SwelloCard />
 
@@ -102,6 +103,7 @@ export default function WalletPage() {
             <p className="font-axi font-normal text-base text-white text-center">Earnings</p>
           </div>
         </div>
+      </div>
       </div>
 
 

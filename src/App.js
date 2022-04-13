@@ -37,48 +37,51 @@ function App() {
   return (
     <div className="flex lg:flex-row flex-col relative main-content">
       <Sidebar />
-      <div className="bg-main-content flex-1">
-        <Header />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <WalletPage
-                balance={balance}
-                account={account}
-                setAccount={setAccount}
-                setBalance={setBalance}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/dashboard"
-            element={
-              <DashboardPage
-                balance={balance}
-                account={account}
-                setAccount={setAccount}
-                setBalance={setBalance}
-              />
-            }
-          />
-          <Route
-            exact
-            path="/calculator"
-            element={
-              <CalculatorPage
-                balance={balance}
-                account={account}
-                setAccount={setAccount}
-                setBalance={setBalance}
-              />
-            }
-          />
-        </Routes>
+      <div className="flex-1">
+        <div className="bg-main-content w-full">
+          <Header />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <WalletPage
+                  balance={balance}
+                  account={account}
+                  setAccount={setAccount}
+                  setBalance={setBalance}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                <DashboardPage
+                  balance={balance}
+                  account={account}
+                  setAccount={setAccount}
+                  setBalance={setBalance}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/calculator"
+              element={
+                <CalculatorPage
+                  balance={balance}
+                  account={account}
+                  setAccount={setAccount}
+                  setBalance={setBalance}
+                />
+              }
+            />
+          </Routes>
+        </div>
+        <MobileMenu />
+      
       </div>
-      <MobileMenu />
     </div>
   )
 }
