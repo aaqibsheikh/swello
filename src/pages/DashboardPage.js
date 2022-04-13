@@ -5,8 +5,8 @@ import Dotted from '../assets/images/dotted.svg'
 import HolderIcon from '../assets/images/holders.svg'
 export default function DashboardPage() {
   return (
-    <div className="flex md:flex-row flex-col md:space-x-10 space-x-0">
-      <div className="md:pt-24 pt-4 flex flex-col md:pl-20 px-4 text-white">
+    <div className="flex xl:flex-row flex-col xl:space-x-10 space-x-0 xl:mb-0 mb-20">
+      <div className="xl:pt-24 pt-4 flex flex-col xl:pl-20 px-4 text-white">
         <p className="uppercase mb-7 text-2xl font-bold font-blender">Overview</p>
         <div>
           <span className="font-blender font-bold text-xxl">Swello Price</span>
@@ -17,7 +17,7 @@ export default function DashboardPage() {
         </div>
         
         <div className="relative flex mt-15 mb-3">
-          <img src={PinkBg} alt="" className="" />
+          <img src={PinkBg} alt="" className="w-full" />
           <img src={Union} alt="" className="absolute bottom-0 right-0" />
           <div className="flex items-center justify-between absolute w-full h-full px-4 py-4">
             <p className="">
@@ -54,7 +54,7 @@ export default function DashboardPage() {
         </div>
       </div>
       
-      <div className="px-8 py-7 bg-[#161724] rounded-[6px] h-48 md:mt-70 md:w-1/3 w-full mb-20">
+      <div className="px-8 py-7 bg-[#161724] rounded-[6px] h-48 xl:mt-70 xl:w-1/3 w-full mb-20">
         <div className="flex items-center justify-between">
           <p className="uppercase font-blender font-bold text-3xl text-white">Next Reward</p>
           <img src={Dotted} alt="" />

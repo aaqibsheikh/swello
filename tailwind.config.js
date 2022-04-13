@@ -3,6 +3,22 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'sm': '320px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       height: {
         '29': '7.125rem',
@@ -30,7 +46,10 @@ module.exports = {
         '13': '3.125rem',
         '15': '3.75rem',
         '70': '17rem',
-      }
+      },
+      minWidth: {
+      '72': '18rem',
+    }
     },
   },
   plugins: [],

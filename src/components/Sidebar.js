@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <div className="w-72 bg-swello-dark md:relative absolute top-0 left-0 hidden md:block">
+    <div className="min-w-72 w-72 bg-swello-dark lg:relative absolute top-0 left-0 hidden lg:block">
       <div className="overflow-y-auto mt-16 ml-12 font-blender font-bold uppercase text-2xl text-[#8A8B91]">
         <Link to="/" className="flex items-center pl-2.5 mb-5">
           <img

@@ -113,3 +113,8 @@ body {
   height: 20px;
   margin-top: -6px;
 }
+
+.dashboard-chart > canvas{
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}

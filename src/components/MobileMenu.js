@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export default function MobileMenu() {
   return (
-    <div className="flex items-center justify-evenly fixed h-24 bottom-0 bg-[#0F0F13] rounded-[15px] w-full pb-6 md:hidden">
+    <div className="flex items-center justify-evenly fixed h-24 bottom-0 bg-[#0F0F13] rounded-[15px] w-full pb-6 lg:hidden">
       <Link to="/dashboard">
         <img src={Icon1} alt="" />
       </Link>

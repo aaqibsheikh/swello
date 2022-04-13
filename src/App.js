@@ -35,7 +35,7 @@ function App() {
   }, [account])
 
   return (
-    <div className="flex md:flex-row flex-col relative main-content">
+    <div className="flex lg:flex-row flex-col relative main-content">
       <Sidebar />
       <div className="bg-main-content flex-1">
         <Header />
