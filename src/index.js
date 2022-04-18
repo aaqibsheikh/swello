@@ -1,28 +1,32 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
+import { ChainId, DAppProvider } from '@usedapp/core';
+
 import './index.css'
 import App from './App'
-import { BrowserRouter } from 'react-router-dom'
-import { Web3ReactProvider } from '@web3-react/core'
-import { Web3Provider } from '@ethersproject/providers'
 
 import reportWebVitals from './reportWebVitals'
 require('dotenv').config()
 
-function getLibrary(provider) {
-  const library = new Web3Provider(provider)
-  library.pollingInterval = 12000
-  return library
-}
+const config = {
+  pollingInterval: 5000,
+  autoConnect: true,
+  readOnlyChainId: ChainId.BSC,
+  readOnlyUrls: {
+    [ChainId.BSC]: 'https://bsc-dataseed.binance.org/'
+  }
+};
 
-const container = document.getElementById('root')
-const root = createRoot(container)
-root.render(
-  <BrowserRouter>
-    <Web3ReactProvider getLibrary={getLibrary}>
-      <App />
-    </Web3ReactProvider>
-  </BrowserRouter>,
-)
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <DAppProvider config={config}>
+        <App />
+      </DAppProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 reportWebVitals()

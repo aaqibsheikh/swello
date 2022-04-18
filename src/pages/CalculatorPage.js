@@ -4,7 +4,7 @@ import 'rc-slider/assets/index.css';
 
 export default function CalculatorPage() {
   return (
-    <div className="flex flex-col lg:ml-36 ml-0 lg:mr-60 mr-0 mb-20">
+    <div className="flex flex-col lg:ml-36 ml-0 lg:mr-60 mr-0 pb-20">
       <p className="uppercase font-bold font-blender text-3xl text-white mb-12 lg:mt-20 mt-11 lg:ml-0 ml-6 hidden lg:block">
         calculator
       </p>

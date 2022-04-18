@@ -287,3 +287,6 @@ export const checkPassPhrase = {
   exactly : 1,
   include: 2,
 }
+
+export const contractAddress = '0x42a15C6C930750E3041134185f6Ea7A67b0818f2';
+// export const contractAddress = '0x56B59F9e572b049419837BF7954A1ea55c9Ae923';

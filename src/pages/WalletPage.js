@@ -1,17 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useEthers } from '@usedapp/core';
+
+import SwelloCard from '../components/SwelloCard'
+import DashboardChart from '../components/DashboardChart'
+// import { useItemContractBalanceOf } from '../utilities/Web3/contract';
+import { useSwelloBalanceToUsd } from '../utilities/Web3/getExchangeRate';
+
+import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import Rewards from '../assets/images/rewards.svg'
 import Owned from '../assets/images/owned.svg'
 import Total from '../assets/images/total.svg'
 import Trade from '../assets/images/trade.svg'
 import Earnings from '../assets/images/earnings.svg'
-import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-import SwelloCard from '../components/SwelloCard'
-import DashboardChart from '../components/DashboardChart'
 import LogoIcon from '../assets/images/logo-icon.svg'
 
+
 export default function WalletPage() {
+    const { deactivate, account } = useEthers()
+
+  // const { balanceOf: nectarBalance } = useItemContractBalanceOf();
+  const { balanceOf: swelloToUsd } = useSwelloBalanceToUsd();
+  if(swelloToUsd && swelloToUsd.length > 0) {
+    console.log('Amount in titano',swelloToUsd[0].toNumber())
+    console.log('Amount in busd',swelloToUsd[1].toNumber())
+  }
+  // console.log('balanceOfSwello',nectarBalance)
+
   return (
     <div className="flex lg:flex-row flex-col">
       <div className="lg:mt-24 md:mt-10 mt-4 lg:ml-20 lg:mx-0 md:mx-32 mx-4">

@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import Web3 from 'web3'
+import { useEthers, useEtherBalance } from '@usedapp/core';
 import ConnectWalletModal from '../components/connectWalletModal'
 
 export default function Header(props) {
-  const { balance, setAccount, setBalance, account } = props
-  const [showModal, setShowModal] = useState(false)
-  const [showConnectWalletModal, setShowConnectWalletModal] = useState(false) 
 
-  function disconnectWallet() {
-    setBalance(undefined)
-    setAccount(false)
-    localStorage.removeItem('account')
+  const { deactivate, account } = useEthers()
+  const balance = useEtherBalance(account)
+  const [showModal, setShowModal] = useState(false)
+
+  const disconnectWallet = () => {
+    deactivate();
+    localStorage.removeItem('walletconnect')
+    localStorage.removeItem('shouldConnectMetamask')
   }
 
   function displayAccount() {
-    if (localStorage.getItem('account') && balance !== undefined) {
+    if (account && balance !== undefined) {
       return (
         <div>
           <span className="pointer">{account}</span>
@@ -31,7 +32,7 @@ export default function Header(props) {
         </div>
       )
     } else {
-      // return !localStorage.getItem('account')? <div
+      // return !account? <div
       //   className="navbar-login cursor-pointer"
       //   onClick={() => setShowConnectWallet(true)}
       // >
@@ -42,7 +43,7 @@ export default function Header(props) {
 
   return (
     <div className="lg:flex lg:justify-end hidden">
-      {!localStorage.getItem('account') ? (
+      {!account ? (
           <button onClick={() => setShowModal(true)} className="btn-wallet-connect mt-10 mr-10 font-axi font-bold text-white text-base bg-[#FA55FF] rounded-[27px]">Connect Wallet</button>
         ) : (
           <button onClick={() => disconnectWallet()} className="btn-wallet-connect mt-10 mr-10 font-axi font-bold text-white text-base bg-[#FA55FF] rounded-[27px]">Disconnect Wallet</button>
@@ -50,13 +51,6 @@ export default function Header(props) {
 
       {showModal && (
         <ConnectWalletModal
-          actions={{
-            setAccount,
-            setBalance,
-          }}
-          // //  setAccount={setAccount}
-          // // setBalance={setBalance}
-          // show={ConnectWalletModal}
           onHide={() => setShowModal(false)}
         />
       )}
