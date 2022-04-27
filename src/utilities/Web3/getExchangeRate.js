@@ -1,10 +1,11 @@
-import { useCall, useContractFunction, useEthers } from '@usedapp/core';
+import { useCall, useEtherBalance, useContractFunction, useEthers } from '@usedapp/core';
 import { Contract, utils } from 'ethers';
 import { useEffect, useState } from 'react';
 import PancakeswapRouterAbi from '../../abi/PancakeswapRouterAbi.json';
 
 
-const pancakeswapContractAddress = "0x10ED43C718714eb63d5aA57B78B54704E256024E"
+const pancakeswapContractAddress = "0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3"
+// const pancakeswapContractAddress = "0x10ED43C718714eb63d5aA57B78B54704E256024E"
 const pancakeswapContractInterface = new utils.Interface(PancakeswapRouterAbi);
 const pancakeswapContract = new Contract(
   pancakeswapContractAddress,
@@ -26,8 +27,8 @@ const pancakeswapContract = new Contract(
 //     ['function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)'],
 // );
 
-export function useSwelloBalanceToUsd()  {
-
+export function useSwelloBalanceToUsd(balance)  {
+  console.log('bal',balance)
   const [balanceOf, setBalanceOf] = useState(undefined);
   const [pending, setPending] = useState(false);
   const { account } = useEthers()
@@ -36,13 +37,14 @@ export function useSwelloBalanceToUsd()  {
       {
         contract: pancakeswapContract,
         method: 'getAmountsOut',
-        args: [100, ['0xBA96731324dE188ebC1eD87ca74544dDEbC07D7f', '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56']]
+        args: [balance, ['0xEB5cED8381EDaAdd2FFd3889928d0e1d9e17F6b9', '0xae13d989dac2f0debff460ac112a837c89baa7cd']]
       }
     ) ?? {};
   useEffect(() => {
     setPending(true);
     if (value) {
-      setBalanceOf(value?.[0]);
+      setBalanceOf(value?.[0]
+      );
       setPending(false);
     }
     if (error) {

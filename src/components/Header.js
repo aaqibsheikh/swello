@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useEthers, useEtherBalance } from '@usedapp/core';
 import ConnectWalletModal from '../components/connectWalletModal'
 
-export default function Header(props) {
+export default function Header() {
 
   const { deactivate, account } = useEthers()
   const balance = useEtherBalance(account)

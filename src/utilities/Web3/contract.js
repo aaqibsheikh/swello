@@ -1,5 +1,5 @@
 import { useCall, useContractFunction, useEthers } from '@usedapp/core';
-import { Contract, utils } from 'ethers';
+import { Contract, utils, BigNumber } from 'ethers';
 import { useEffect, useState } from 'react';
 import ItemContract from '../../abi/SwelloAbi.json';
 import { SWELLO_CONTRACT_ADDRESS } from '../../common/environmentVariables';
@@ -10,10 +10,12 @@ const swelloContract = new Contract(
   swelloContractAddress,
   swelloContractInterface
 );
-export function useItemContractBalanceOf()  {
+
+console.log('swelloContract',swelloContract)
+export function useGetSwelloBalance(account)  {
   const [balanceOf, setBalanceOf] = useState(undefined);
   const [pending, setPending] = useState(false);
-  const { account } = useEthers()
+  // const { account } = useEthers()
   const { value, error } =
     useCall(
       account &&
@@ -26,7 +28,8 @@ export function useItemContractBalanceOf()  {
   useEffect(() => {
     setPending(true);
     if (value) {
-      setBalanceOf(value?.[0]);
+      const balance = BigNumber.from(value.toString());
+      setBalanceOf(utils.formatEther(balance));
       setPending(false);
     }
     if (error) {
@@ -34,6 +37,7 @@ export function useItemContractBalanceOf()  {
       setPending(false);
       setBalanceOf(undefined);
     }
+    console.log('WHAT AM I GETTING', value, error)
   }, [value, error]);
 
   return { balanceOf, error, pending };

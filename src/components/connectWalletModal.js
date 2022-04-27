@@ -58,8 +58,8 @@ const ConnectWalletModal = (props) => {
         qrcode: true,
         bridge: 'https://bridge.walletconnect.org',
         rpc: {
-          [ChainId.BSC]:
-            'https://bsc-dataseed.binance.org/',
+          [ChainId.BSCTestnet]:
+            process.env.REACT_APP_BSC_TESTNET_RPC,
           // PUBLIC / PRIVATE RPC NODE URL
           // [ChainId.BSC]: `${BSC_NODE}`,
         },

@@ -18,10 +18,10 @@ import MobileMenu from './components/MobileMenu'
 
 function App() {
 
-  const { activateBrowserWallet, account, activate, deactivate, chainId } = useEthers()
+  const { activateBrowserWallet, activate, chainId } = useEthers()
 
   useEffect(() => {
-    if(ChainId.BSC !== chainId) {
+    if(ChainId.BSCTestnet !== chainId) {
       toast.error("Connect to Binance Smart Chain and refresh page", {
         position: 'bottom-right',
         autoClose: false,
@@ -32,15 +32,15 @@ function App() {
         progress: undefined,
       })
     }
-
+    console.log('process.env.REACT_APP_BSC_TESTNET_RPC',process.env.REACT_APP_BSC_TESTNET_RPC)
     const checkWalletConnectSession = async () => {
       if (window.localStorage.walletconnect) {
         const provider = new WalletConnectProvider({
           qrcode: true,
           bridge: 'https://bridge.walletconnect.org',
           rpc: {
-            [ChainId.BSC]:
-              'https://bsc-dataseed.binance.org/',
+            [ChainId.BSCTestnet]:
+              process.env.REACT_APP_BSC_TESTNET_RPC,
             // PUBLIC / PRIVATE RPC NODE URL
             // [ChainId.BSC]: `${BSC_NODE}`,
           },

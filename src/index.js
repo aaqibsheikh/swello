@@ -12,9 +12,9 @@ require('dotenv').config()
 const config = {
   pollingInterval: 5000,
   autoConnect: true,
-  readOnlyChainId: ChainId.BSC,
+  readOnlyChainId: ChainId.BSCTestnet,
   readOnlyUrls: {
-    [ChainId.BSC]: 'https://bsc-dataseed.binance.org/'
+    [ChainId.BSCTestnet]: process.env.REACT_APP_BSC_TESTNET_RPC
   }
 };
 
