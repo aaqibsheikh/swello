@@ -61,7 +61,7 @@ function App() {
       <div className="flex lg:flex-row flex-col relative main-content">
         <Sidebar />
         <div className="flex-1">
-          <div className="bg-main-content w-full">
+          <div className="bg-main-content w-full h-full ">
             <Header />
             <Routes>
               <Route exact path="/" element={<WalletPage />} />
