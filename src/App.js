@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import { useEthers, ChainId } from '@usedapp/core'
-import { BSC_NODE } from './common/environmentVariables'
 
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -41,11 +40,9 @@ function App() {
           rpc: {
             [ChainId.BSCTestnet]:
               process.env.REACT_APP_BSC_TESTNET_RPC,
-            // PUBLIC / PRIVATE RPC NODE URL
-            // [ChainId.BSC]: `${BSC_NODE}`,
           },
           
-        })
+        })  
         await provider.enable()
         activate(provider)
         activateBrowserWallet()

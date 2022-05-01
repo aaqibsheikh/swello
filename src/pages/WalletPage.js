@@ -3,9 +3,8 @@ import { useEthers } from '@usedapp/core'
 import { utils } from 'ethers'
 import SwelloCard from '../components/SwelloCard'
 import DashboardChart from '../components/DashboardChart'
-import { useGetSwelloBalance } from '../utilities/Web3/contract'
-import { useSwelloBalanceToUsd } from '../utilities/Web3/getExchangeRate';
-
+import { useGetSwelloBalance, } from '../utilities/Web3/contract'
+import { useGetSwelloPriceInUSD } from '../utilities/Web3/getExchangeRate';
 import {
   CircularProgressbarWithChildren,
   buildStyles,
@@ -22,17 +21,9 @@ import LogoIcon from '../assets/images/logo-icon.svg'
 export default function WalletPage() {
   const { deactivate, account } = useEthers()
 
-  const { balanceOf: swelloBalance } = useGetSwelloBalance(account)
-    console.log('swelloBalance', swelloBalance)
-  const { balanceOf: swelloToUsd } = useSwelloBalanceToUsd(swelloBalance);
-  console.log('swelloToUsd',swelloToUsd)
-  if(swelloToUsd && swelloToUsd.length > 0) {
-    console.log('Amount in swello',swelloToUsd[0].toNumber().toFixed(4))
-    console.log('Amount in busd',swelloToUsd[1].toNumber().toFixed(4))
-  }
-  // console.log('balanceOfSwello',nectarBalance)
-
-
+  // const { balanceOf: swelloBalance } = useGetSwelloBalance(account)
+  const { usdtToSwello } = useGetSwelloPriceInUSD();
+  console.log('usdtToSwello',usdtToSwello)
   return (
     <div className="flex lg:flex-row flex-col">
       <div className="lg:mt-24 md:mt-10 mt-4 lg:ml-20 lg:mx-0 md:mx-32 mx-4">

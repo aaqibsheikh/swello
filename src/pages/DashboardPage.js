@@ -1,9 +1,25 @@
 import React from 'react'
+// contract methods defined
+import { useTotalSupply, useGetCirculatingSupply, useGetTreasury, useGetTreasuryAndSafetyAddress, useGetTreasuryAndSafetyFund } from '../utilities/Web3/contract';
+import { useGetSwelloPriceInUSD } from '../utilities/Web3/getExchangeRate';
+// Images
 import PinkBg from '../assets/images/pink-bg.svg'
 import Union from '../assets/images/union.svg'
 import Dotted from '../assets/images/dotted.svg'
 import HolderIcon from '../assets/images/holders.svg'
+
+
 export default function DashboardPage() {
+  const { totalSupply } = useTotalSupply();
+  const { circulatingSupply } = useGetCirculatingSupply();
+  const { treasury } = useGetTreasury();
+  const { usdtToSwello } = useGetSwelloPriceInUSD();
+  const { treasuryAddress, safetyFundAddress } = useGetTreasuryAndSafetyAddress();
+  console.log(`treasuryAddress: ${treasuryAddress} safetyFundAddress:${safetyFundAddress}`)
+  const {treasuryFundValue, safetyFundValue } = useGetTreasuryAndSafetyFund(treasuryAddress, safetyFundAddress);
+  console.log(`treasuryFundValue: ${treasuryFundValue} safetyFundValue:${safetyFundValue}`)
+
+  console.log(`usdtToSwello: ${usdtToSwello} || totalSuppl: ${totalSupply} || CirculatingSupply: ${circulatingSupply} || Treasury: ${treasury}`)
   return (
     <div className="flex xl:flex-row flex-col xl:space-x-10 space-x-0 xl:mb-0 mb-20">
       <div className="xl:pt-24 pt-4 flex flex-col xl:pl-20 px-4 text-white">
@@ -11,7 +27,7 @@ export default function DashboardPage() {
         <div>
           <span className="font-blender font-bold text-xxl">Swello Price</span>
           <br/>
-          <span className="font-blender font-bold text-4xl">$0.07</span>
+          <span className="font-blender font-bold text-4xl">${usdtToSwello}</span>
           <span className="font-blender font-bold text-xxl text-[#FA55FF]">↑2.5% </span>
           <span className="font-blender font-bold text-xxl text-[#1B1E22]"> past 24hrs</span>
         </div>
@@ -23,7 +39,7 @@ export default function DashboardPage() {
             <p className="">
               <span className="font-axi font-normal text-sm">Swell Market Cap</span>
               <br />
-              <span className="font-bold font-blender text-3xl">$201,905,257</span>
+              <span className="font-bold font-blender text-3xl">${ usdtToSwello * circulatingSupply }</span>
             </p>
             <p className="font-blender font-bold text-xl text-[#FA55FF]">+4.5%</p>
           </div>
@@ -35,7 +51,7 @@ export default function DashboardPage() {
             <p className="">
               <span className="font-axi font-normal text-sm">Swell Treasury Assets</span>
               <br />
-              <span className="font-bold font-blender text-3xl">$7,890,319</span>
+              <span className="font-bold font-blender text-3xl">${ usdtToSwello * treasuryFundValue }</span>
             </p>
             <p className="font-blender font-bold text-xl text-[#FA55FF]">↑2.5%</p>
           </div>
@@ -47,7 +63,7 @@ export default function DashboardPage() {
             <p className="">
               <span className="font-axi font-normal text-sm">Swell Safety Fund</span>
               <br />
-              <span className="font-bold font-blender text-3xl">$5,6893,019</span>
+              <span className="font-bold font-blender text-3xl">${ usdtToSwello * safetyFundValue }</span>
             </p>
             <p className="font-blender font-bold text-xl text-[#FA55FF]">↑2.5%</p>
           </div>
